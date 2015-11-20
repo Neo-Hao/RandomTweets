@@ -1,4 +1,4 @@
-#setwd("C:/Users/4malteses/Desktop/Data")
+#setwd("C:/Users/4malteses/Desktop/RandomTweets/batch1")
 
 ## collectappend result to a csv file
 tweetCollect <- function(hashtag, numberOfTweets, nameOfFile) {
