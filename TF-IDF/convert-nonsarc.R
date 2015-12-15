@@ -94,10 +94,10 @@ test.ready <- tm_map(docs, PlainTextDocument)
 dtm <- DocumentTermMatrix(test.ready,
                           control = list(weighting = function(x) weightTfIdf(x, normalize = T),
                                          stopwords = TRUE))
+# rename rows
+rownames(dtm) <- 1:len
 dtm <- removeSparseTerms(dtm, 0.999)
 
-# rename rows
-rownames(dtm) <- 1:64525
 
 ### tf-idf
 write.csv(as.matrix(dtm), file="tf-idf-nonsarc.csv")
