@@ -50,6 +50,10 @@ for (i in 1:len) {
 # remove NA
 data <- na.omit(data)
 
+# trim white space just in case
+trim <- function (x) gsub("^\\s+|\\s+$", "", x)
+data$text <- trim(data$text)
+
 
 # delete the exactly same tweets
 len <- dim(data)[1]
@@ -77,7 +81,11 @@ while (count < len) {
 # remove NA
 data <- na.omit(data)
 
-write.csv(data, "refined-subset1.csv", row.names = F)
+# add class
+class <- rep(1, dim(data)[1])
+data <- cbind(data, class)
+
+write.csv(data, "refined-sarc.csv", row.names = F)
 
 # save into three groups
 data.haveLinks <- data[data$link == 1,]
